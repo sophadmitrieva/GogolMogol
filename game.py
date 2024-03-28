@@ -33,15 +33,13 @@ mops_lapa = pygame.image.load("lapa.png")
 lapa_width = 200
 lapa_height = 450
 
-cursor_img = pygame.image.load("cursor_img.png")
+cursor = pygame.image.load("cursor_img.png")
+cursor_img = cursor
 pygame.mouse.set_visible(False)
 cursor_img_rect = cursor_img.get_rect()
 
 square = pygame.image.load("square.png")
-square_width = 650 #square coordinates
-square_height = 350
 speed_square = 1
-square_rect = square.get_rect(center=(square_width, square_height))
 square_hover = pygame.image.load("square_hold.png")
 directions = True #change the direction of the square
 
@@ -63,12 +61,7 @@ while game:
     display.blit(background, (0, 0))
 
     if game_begining:
-        if square_width != display_width - 25:
-            square_width += speed_square
-        if square_width == display_width - 25:
-            square_width = 650
-
-        display.blit(square, square_rect)
+        cursor_img = square
 
     display.blit(current_image, current_coordinates)
 
@@ -101,7 +94,6 @@ while game:
                 lapa_height -= 20
                 lapa_width -= 110
                 needed_click += 1
-                press_button = True
                 pygame.time.set_timer(LAPA_EVENT, 3500)
                 pygame.time.set_timer(MOPS_EVENT, 5000)
 
